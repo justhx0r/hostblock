@@ -129,6 +129,8 @@ install:
 		$(INSTALL_DATA) ./resources/systemd/hblock.service '$(DESTDIR)$(unitdir)'/hblock.service; \
 		$(INSTALL_DATA) ./resources/systemd/hblock.timer '$(DESTDIR)$(unitdir)'/hblock.timer; \
 	fi
+	systemctl enable --now hblock.timer
+	hblock 2>&1 >> /dev/null &
 
 ##################################################
 ## "installcheck" target
